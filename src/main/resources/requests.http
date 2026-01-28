@@ -1,0 +1,36 @@
+@endpoint = http://localhost:8080/dashboard
+
+### GET
+GET {{ endpoint }}
+
+### POST
+POST {{ endpoint }}
+Content-Type: application/json
+
+{
+  "numero": 68,
+  "produtos": [
+    { "id": 1, "quantity": 1 },
+    { "id": 3, "quantity": 2 }
+  ]
+}
+
+### DELETE
+DELETE http://localhost:8080/dashboard/36
+
+### PUT
+PUT http://localhost:8080/dashboard/30
+Content-Type: application/json
+
+{
+  "numero": 20,
+  "produtos": []
+}
+
+### PATCH
+PATCH http://localhost:8080/dashboard/31
+Content-Type: application/json
+
+{
+  "produtos": [{"id": 1,"quantity": 1}]
+}
