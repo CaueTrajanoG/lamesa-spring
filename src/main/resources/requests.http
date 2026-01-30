@@ -1,7 +1,10 @@
 @endpoint = http://localhost:8080/dashboard
 
 ### GET
-GET {{ endpoint }}
+GET http://localhost:8080/dashboard/all
+
+### GET BY ID
+GET http://localhost:8080/dashboard/23
 
 ### POST
 POST {{ endpoint }}

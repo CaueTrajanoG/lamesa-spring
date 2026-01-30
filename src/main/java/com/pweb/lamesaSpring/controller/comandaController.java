@@ -1,6 +1,7 @@
 package com.pweb.lamesaSpring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +28,14 @@ public class comandaController {
         this.comandaService = comandaService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Comanda> getAll(){
         return comandaService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Comanda> getById(@PathVariable Long id){
+        return comandaService.getById(id);
     }
 
     @PostMapping      //anotacao do spring pra passar o objeto diretamente

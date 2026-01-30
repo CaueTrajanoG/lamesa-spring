@@ -1,5 +1,6 @@
 package com.pweb.lamesaSpring.service;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class comandaService {
     ///Get
     public List<Comanda> getAll(){
         return ComandaRep.findAll();
+    }
+    public Optional<Comanda> getById(Long id){
+        return ComandaRep.findById(id);
     }
 
 
