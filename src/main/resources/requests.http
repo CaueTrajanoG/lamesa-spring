@@ -4,7 +4,7 @@
 GET http://localhost:8080/dashboard/all
 
 ### GET BY ID
-GET http://localhost:8080/dashboard/23
+GET http://localhost:8080/dashboard/34
 
 ### POST
 POST {{ endpoint }}
