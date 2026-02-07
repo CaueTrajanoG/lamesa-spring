@@ -4,14 +4,14 @@
 GET http://localhost:8080/dashboard/all
 
 ### GET BY ID
-GET http://localhost:8080/dashboard/34
+GET http://localhost:8080/dashboard/99
 
 ### POST
 POST {{ endpoint }}
 Content-Type: application/json
 
 {
-  "numero": 68,
+  "numero": 99,
   "produtos": [
     { "id": 1, "quantity": 1 },
     { "id": 3, "quantity": 2 }

@@ -24,6 +24,7 @@ public class comandaService {
     public List<Comanda> getAll(){
         return ComandaRep.findAll();
     }
+    
     public Optional<Comanda> getById(Long id){
         return ComandaRep.findById(id);
     }
