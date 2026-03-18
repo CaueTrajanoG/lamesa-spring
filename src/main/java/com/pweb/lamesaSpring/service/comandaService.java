@@ -29,11 +29,13 @@ public class comandaService {
         return ComandaRep.findById(id);
     }
 
+    public Optional<Comanda> getByNumber(Long numero){
+        return ComandaRep.findByNumero(numero);
+    }
 
     //posting a new order
-    public String save(Comanda novaComanda){
-        ComandaRep.save(novaComanda);
-        return "Comanda criada com sucesso!";
+    public Comanda save(Comanda novaComanda){        
+        return ComandaRep.save(novaComanda);
     }
 
 
@@ -47,35 +49,32 @@ public class comandaService {
         return "Objeto removido";
     }
 
-    //PUT
+    // PUT
+    public Comanda updateByPut(Long id, Comanda comanda){
+        Comanda existingComanda = this.ComandaRep.findById(id)
+            .orElseThrow(() -> new RuntimeException("Comanda não encontrada"));
 
-    public String updateByPut(Long id,Comanda comanda){
-
-        if (comanda != null){
-            comanda.setId(id);
-            this.ComandaRep.save(comanda);
-            return "Comanda atualizada com sucesso!";
-        }
-        return "Comanda invalida";
+        // garante que o ID do path é o que será salvo
+        comanda.setId(existingComanda.getId());
+        return this.ComandaRep.save(comanda);
     }
 
-    //Pach
+    // PATCH
+    public Comanda updateByPatch(Long id, Comanda comanda){
 
-    public String updateByPatch(Long id, Comanda comanda){
-        Comanda existingComanda = this.ComandaRep.findById(id).orElse(null);   
-        
-        if(existingComanda != null){
+        Comanda existingComanda = this.ComandaRep.findById(id)
+            .orElseThrow(() -> new RuntimeException("Comanda não encontrada"));
+
         try {
-                this.mapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
+            // ignora campos null no PATCH
+            this.mapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
 
-                Comanda updatedComanda = this.mapper.updateValue(existingComanda, comanda);
+            this.mapper.updateValue(existingComanda, comanda);
 
-                this.ComandaRep.save(updatedComanda);
-            } catch(JsonMappingException jme) {
-                System.out.println("Erro na desserialização!");
-            }
-            return "Comanda atualizada via patch";
+            return this.ComandaRep.save(existingComanda);
+
+        } catch (JsonMappingException e) {
+            throw new RuntimeException("Erro ao aplicar PATCH", e);
         }
-        return "Erro na atualização da comanda via patch";
     }
 }

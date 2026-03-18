@@ -3,31 +3,27 @@
 ### GET
 GET http://localhost:8080/dashboard/all
 
-### GET BY ID
-GET http://localhost:8080/dashboard/99
+## GET by number
+GET http://localhost:8080/dashboard/33
 
 ### POST
 POST {{ endpoint }}
 Content-Type: application/json
 
 {
-  "numero": 99,
-  "produtos": [
-    { "id": 1, "quantity": 1 },
-    { "id": 3, "quantity": 2 }
-  ]
+  "numero": 33
 }
 
 ### DELETE
-DELETE http://localhost:8080/dashboard/36
+DELETE http://localhost:8080/dashboard/46
+
 
 ### PUT
-PUT http://localhost:8080/dashboard/30
+PUT http://localhost:8080/dashboard/47
 Content-Type: application/json
 
 {
-  "numero": 20,
-  "produtos": []
+  "aberta": true
 }
 
 ### PATCH
